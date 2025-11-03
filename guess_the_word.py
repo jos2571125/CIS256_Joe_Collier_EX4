@@ -4,8 +4,8 @@
 
 import random
 
-# Function to create the dictionary and 
 def word_guesser():
+    # Dictionary to store words
     word_dictionary = {"engine":"6 letters",
                        "brakes":"6 letters",
                        "axle":"4 letters",
@@ -19,25 +19,25 @@ def word_guesser():
     attempts = 6 # Variable to set number of attempts
     guessed_letters = set() # Set the letters guessed
 
-    print("Welcome to the word guessing game.")
-    print("The words are parts of cars.")
-    print(f"Hint: {hint}")
+    print("\nWelcome to the word guessing game.")
+    print("The words are parts of cars.\n")
+    print(f"Hint: The word selected has {hint}.")
     print(f"You have {attempts} attempts.\n")
     
     # Game loop
     while attempts > 0 and "_" in word_display:
         print("Word:", " ".join(word_display)) # Displays the correctly guessed letters in which order they appear in the word
         print("Guessed letters:", " ".join(sorted(guessed_letters))) # Displays the guessed letteres in alphabetical order
-        guess = input("Guess a letter:")
+        guess = input("\nGuess a letter:")
 
         # Check for incorrect input
-        if len(guess) != 1 or not guess.isapha():
+        if len(guess) != 1 or not guess.isalpha():
             print("Please enter a single letter.\n")
             continue
 
         # Check for guessed letters
         if guess in guessed_letters:
-            print("That letter has already been geuessed.\n")
+            print("That letter has already been guessed.\n")
             continue
         
         # Add the letter geussed to the guessed_letters set list
@@ -55,9 +55,9 @@ def word_guesser():
 
     # End game
     if "_" not in word_display:
-        print(f"You guessed the word correctly. The word was {word}")
+        print(f"\nYou guessed the word correctly. The word was '{word}'.\n")
     else:
-        print(f"You are out of attempts. The word was {word}")
+        print(f"You are out of attempts. The word was '{word}'.\n")
 
 # Run Game
 word_guesser()
