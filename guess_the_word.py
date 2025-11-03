@@ -71,4 +71,5 @@ def word_guesser():
         print(f"You are out of attempts. The word was '{word}'.\n")
 
 # Run Game
-word_guesser()
+if __name__ == "__main__":
+    word_guesser()
