@@ -4,6 +4,23 @@
 
 import random
 
+def choose_word(word_dictionary):
+    return random.choice(list(word_dictionary.items()))
+
+def guess_process(word, guess, word_display, attempts, guessed_letters):
+
+    # Add the letter geussed to the guessed_letters set list
+    guessed_letters.add(guess)
+
+    # Check for correct guess
+    if guess in word:
+        for i, letter in enumerate(word):
+            if letter == guess:
+                word_display[i] = guess
+    else:
+        attempts -= 1 # Remove 1 from attempts
+    return word_display, attempts, guessed_letters
+
 def word_guesser():
     # Dictionary to store words
     word_dictionary = {"engine":"6 letters",
@@ -40,17 +57,11 @@ def word_guesser():
             print("That letter has already been guessed.\n")
             continue
         
-        # Add the letter geussed to the guessed_letters set list
-        guessed_letters.add(guess)
-
-        # Check for correct guess
+        word_display, attempts, guessed_letters = guess_process(word, guess, word_display, attempts, guessed_letters)
+ 
         if guess in word:
             print("The letter you guessed is correct.")
-            for i, letter in enumerate(word):
-                if letter == guess:
-                    word_display[i] = guess
         else:
-            attempts -= 1 # Remove 1 from attempts
             print(f"The letter you guessed is not correct. You have {attempts} attempts left.\n")
 
     # End game
