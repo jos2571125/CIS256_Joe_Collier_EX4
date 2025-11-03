@@ -4,6 +4,15 @@
 
 import random
 
+# Dictionary to store words
+word_dictionary = {"engine":"6 letters",
+                    "brakes":"6 letters",
+                    "axle":"4 letters",
+                    "tires":"5 letters",
+                    "seat":"4 letters",
+                    "pedal":"5 letters"
+                    }
+
 def choose_word(word_dictionary):
     return random.choice(list(word_dictionary.items()))
 
@@ -22,16 +31,7 @@ def guess_process(word, guess, word_display, attempts, guessed_letters):
     return word_display, attempts, guessed_letters
 
 def word_guesser():
-    # Dictionary to store words
-    word_dictionary = {"engine":"6 letters",
-                       "brakes":"6 letters",
-                       "axle":"4 letters",
-                       "tires":"5 letters",
-                       "seat":"4 letters",
-                       "pedal":"5 letters"
-                       }
-
-    word, hint = random.choice(list(word_dictionary.items())) # Word picker
+    word, hint = choose_word(word_dictionary) # Word picker
     word_display = ["_" if letter.isalpha() else letter for letter in word] # Displays each letter if picked
     attempts = 6 # Variable to set number of attempts
     guessed_letters = set() # Set the letters guessed
